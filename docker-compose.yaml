@@ -1,0 +1,82 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:15
+    restart: always
+    command: postgres -c 'max_connections=200'
+    container_name: 'postgres'
+    environment:
+      POSTGRES_PASSWORD: ''
+      POSTGRES_USER: 'postgres'
+      POSTGRES_HOST_AUTH_METHOD: 'trust'
+      POSTGRES_DB: 'blockscout'
+    ports:
+      - "127.0.0.1:7432:5432"
+
+  redis:
+    image: redis:6.2.6
+    ports:
+      - "127.0.0.1:6379:6379"
+
+  backend:
+    extends:
+      file: ./services/backend.yml
+      service: backend
+    depends_on:
+      - postgres
+      - redis
+    links:
+      - postgres:database
+    environment:
+      ETHEREUM_JSONRPC_HTTP_URL: http://host.docker.internal:8547/
+      ETHEREUM_JSONRPC_TRACE_URL: http://host.docker.internal:8547/
+      ETHEREUM_JSONRPC_WS_URL: ws://host.docker.internal:8548/
+      DATABASE_URL: postgresql://postgres:@postgres:5432/blockscout
+      ETHEREUM_JSONRPC_VARIANT: 'geth'
+      CHAIN_ID: '412346'
+    profiles: [blockscout]
+
+  visualizer:
+    extends:
+      file: ./services/visualizer.yml
+      service: visualizer
+    profiles: [blockscout]
+
+  sig-provider:
+    extends:
+      file: ./services/sig-provider.yml
+      service: sig-provider
+    profiles: [blockscout]
+
+  frontend:
+    depends_on:
+      - backend
+    extends:
+      file: ./services/frontend.yml
+      service: frontend
+    profiles: [blockscout]
+
+  stats:
+    extends:
+      file: ./services/stats.yml
+      service: stats
+    depends_on:
+      - postgres
+      - backend
+    environment:
+      STATS__BLOCKSCOUT_DB_URL: postgresql://postgres:@postgres:5432/blockscout
+      STATS__DB_URL: postgresql://postgres:@postgres:5432/stats
+      STATS__CREATE_DATABASE: true
+      STATS__RUN_MIGRATIONS: true
+      STATS__FORCE_UPDATE_ON_START: true
+    profiles: [blockscout]
+
+  proxy:
+    depends_on:
+      - backend
+      - frontend
+      - stats
+    extends:
+      file: ./services/nginx.yml
+      service: proxy
+    profiles: [blockscout]

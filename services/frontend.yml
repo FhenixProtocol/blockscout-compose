@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  frontend:
+    image: ghcr.io/blockscout/frontend:${FRONTEND_DOCKER_TAG:-latest}
+    # to further customize:
+    # build: /path/to/frontend-repo, clone: git@github.com:blockscout/frontend.git
+    platform: linux/amd64
+    restart: always
+    container_name: 'frontend'
+    env_file:
+      -  ../envs/common-frontend.env
+    volumes:
+        - ./frontend-assets/:/assets/from-host/
+    environment:
+      NEXT_PUBLIC_NETWORK_NAME: Fhenix 2
+      NEXT_PUBLIC_NETWORK_SHORT_NAME: Fhenix 2
+      NEXT_PUBLIC_IS_TESTNET: false
+      NEXT_PUBLIC_NETWORK_VERIFICATION_TYPE: validation
+      NEXT_PUBLIC_HOMEPAGE_PLATE_TEXT_COLOR: 'black'
+      NEXT_PUBLIC_HOMEPAGE_PLATE_BACKGROUND: 'no-repeat image("file:///assets/from-host/blockscout-banner-no-tr.jpg")'
+      NEXT_PUBLIC_NETWORK_LOGO: https://www.fhenix.io/wp-content/uploads/2023/05/Group-1079.svg
+      NEXT_PUBLIC_NETWORK_LOGO_DARK: https://remix-plugin.fhenix.zone/_nuxt/logo.snBy_hs-.png
+      NEXT_PUBLIC_NETWORK_ICON: file:///assets/from-host/fhe-logo-light.png
+
+      # FAVICON_GENERATOR_API_KEY: dca4c945fbf69fa683d8a37747eca94767eda610
+      # FAVICON_MASTER_URL: file:///app/assets/fhe-logo-light.png
+      # NEXT_PUBLIC_HOMEPAGE_PLATE_BACKGROUND: 'no-repeat bottom 20% right 0px 100% url("https://placekitten.com/1400/200")'
+
+      # todo:
+      # NEXT_PUBLIC_NETWORK_CURRENCY_WEI_NAME:
+      # NEXT_PUBLIC_NETWORK_CURRENCY_SYMBOL:
+      # NEXT_PUBLIC_NETWORK_RPC_URL:
+      # NEXT_PUBLIC_FOOTER_LINKS:

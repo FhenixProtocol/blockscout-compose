@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  stats:
+    image: ghcr.io/blockscout/stats:${STATS_DOCKER_TAG:-latest}
+    platform: linux/amd64
+    restart: always
+    container_name: 'stats'
+    entrypoint:
+     - /bin/sh
+     - -c
+     - |
+         echo "sleep for 14sec"
+         sleep 14 
+         /app/stats-server
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    env_file:
+      -  ../envs/common-stats.env
+    environment:
+      - STATS__DB_URL=postgresql://stats:n0uejXPl61ci6ldCuE2gQU5Y@stats-db:5432/stats
+      - STATS__BLOCKSCOUT_DB_URL=${STATS__BLOCKSCOUT_DB_URL:-postgresql://postgres:@postgres:5432/blockscout}
+      - STATS__CREATE_DATABASE=true
+      - STATS__RUN_MIGRATIONS=true
