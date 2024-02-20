@@ -1,0 +1,17 @@
+{
+  "Discover": [
+    {"text":"Home Page", "url": "https://www.fhenix.io/"},
+    {"text":"Blog", "url": "https://www.fhenix.io/discover/"}
+  ],
+  "Community": [
+    {"text":"Medium", "url": "https://medium.com/@Fhenix"},
+    {"text":"Youtube", "url": "https://www.youtube.com/channel/UCmUYrTjMUom3ywbwgHfTr4g"},
+    {"text":"Discord", "url": "https://discord.gg/FuVgxrvJMY"},
+    {"text":"Twitter", "url": "https://twitter.com/FhenixIO"}
+  ],
+  "Build": [
+    {"text":"Docs", "url": "https://fhenixprotocol.github.io/fhenix-docs/"},
+    {"text":"Geting Started", "url": "https://www.fhenix.io/getting-started/"},
+    {"text":"Tutorial", "url": "https://fhenixprotocol.github.io/fhenix-docs/docs/tutorial/intro"}
+  ]
+}
