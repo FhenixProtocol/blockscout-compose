@@ -23,7 +23,7 @@ services:
       NEXT_PUBLIC_NETWORK_LOGO_DARK: https://remix-plugin.fhenix.zone/_nuxt/logo.snBy_hs-.png
       NEXT_PUBLIC_NETWORK_ICON: https://raw.githubusercontent.com/FhenixProtocol/blockscout-compose/main/services/frontend-assets/fhe-logo-light.png
       NEXT_PUBLIC_AD_BANNER_PROVIDER: none
-      NEXT_PUBLIC_FOOTER_LINKS: https://example.com/footer_links_config.json
+      NEXT_PUBLIC_FOOTER_LINKS: https://raw.githubusercontent.com/FhenixProtocol/blockscout-compose/main/services/frontend-assets/footer_links.json?v=2
       # FAVICON_GENERATOR_API_KEY: dca4c945fbf69fa683d8a37747eca94767eda610
 
       # todo:
