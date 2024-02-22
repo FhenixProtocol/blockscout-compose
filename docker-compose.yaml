@@ -28,8 +28,8 @@ services:
     links:
       - postgres:database
     environment:
-      ETHEREUM_JSONRPC_HTTP_URL: http://api-node.testnet1.nonprod.fhe.zone:7747
-      ETHEREUM_JSONRPC_TRACE_URL: http://api-node.testnet1.nonprod.fhe.zone:7747
+      ETHEREUM_JSONRPC_HTTP_URL: 34.244.37.126:8547
+      ETHEREUM_JSONRPC_TRACE_URL: 34.244.37.126:8547
       # ETHEREUM_JSONRPC_WS_URL: ws://host.docker.internal:8548/
       DATABASE_URL: postgresql://postgres:@postgres:5432/blockscout
       ETHEREUM_JSONRPC_VARIANT: 'geth'
