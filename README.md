@@ -5,7 +5,7 @@
 - Docker-compose 2.x.x+
 - Running Ethereum JSON RPC client, preferably archive node:
 ```bash
-docker run -p 8547:8547 -p 8548:8548 -p 3000:3000 -v ./run.sh:/home/user/run.sh ghcr.io/fhenixprotocol/localfhenix:v0.1.0-beta5
+docker run -p 8547:8547 -p 8548:8548 -v ./run.sh:/home/user/run.sh ghcr.io/fhenixprotocol/localfhenix:v0.1.0-beta5
 # make a transaction, empty blockchain may not work
 ```
 
