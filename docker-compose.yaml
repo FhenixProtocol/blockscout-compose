@@ -34,19 +34,16 @@ services:
       DATABASE_URL: postgresql://postgres:@postgres:5432/blockscout
       ETHEREUM_JSONRPC_VARIANT: 'geth'
       CHAIN_ID: '412346'
-    profiles: [blockscout]
 
   visualizer:
     extends:
       file: ./services/visualizer.yml
       service: visualizer
-    profiles: [blockscout]
 
   sig-provider:
     extends:
       file: ./services/sig-provider.yml
       service: sig-provider
-    profiles: [blockscout]
 
   frontend:
     depends_on:
@@ -54,7 +51,6 @@ services:
     extends:
       file: ./services/frontend.yml
       service: frontend
-    profiles: [blockscout]
 
   stats:
     extends:
@@ -69,7 +65,6 @@ services:
       STATS__CREATE_DATABASE: true
       STATS__RUN_MIGRATIONS: true
       STATS__FORCE_UPDATE_ON_START: true
-    profiles: [blockscout]
 
   proxy:
     depends_on:
@@ -79,4 +74,3 @@ services:
     extends:
       file: ./services/nginx.yml
       service: proxy
-    profiles: [blockscout]
