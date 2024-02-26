@@ -15,15 +15,18 @@ services:
     environment:
       NEXT_PUBLIC_NETWORK_NAME: Fhenix
       NEXT_PUBLIC_NETWORK_SHORT_NAME: Fhenix
-      NEXT_PUBLIC_IS_TESTNET: false
+      NEXT_PUBLIC_IS_TESTNET: true
       NEXT_PUBLIC_NETWORK_VERIFICATION_TYPE: validation
       NEXT_PUBLIC_HOMEPAGE_PLATE_TEXT_COLOR: 'black'
-      NEXT_PUBLIC_HOMEPAGE_PLATE_BACKGROUND: 'no-repeat bottom 20% right 0px/100% url("https://raw.githubusercontent.com/FhenixProtocol/blockscout-compose/main/services/frontend-assets/blockscout-banner.png")'
+      NEXT_PUBLIC_HOMEPAGE_PLATE_BACKGROUND: 'url("https://raw.githubusercontent.com/FhenixProtocol/blockscout-compose/main/services/frontend-assets/blockscout-banner.png") no-repeat center/cover'
       NEXT_PUBLIC_NETWORK_LOGO: https://www.fhenix.io/wp-content/uploads/2023/05/Group-1079.svg
       NEXT_PUBLIC_NETWORK_LOGO_DARK: https://remix-plugin.fhenix.zone/_nuxt/logo.snBy_hs-.png
       NEXT_PUBLIC_NETWORK_ICON: https://raw.githubusercontent.com/FhenixProtocol/blockscout-compose/main/services/frontend-assets/fhe-logo-light.png
       NEXT_PUBLIC_AD_BANNER_PROVIDER: none
+      NEXT_PUBLIC_AD_TEXT_PROVIDER: none
       NEXT_PUBLIC_FOOTER_LINKS: https://raw.githubusercontent.com/FhenixProtocol/blockscout-compose/main/services/frontend-assets/footer_links.json?v=2
+      NEXT_PUBLIC_NETWORK_CURRENCY_NAME: Fhe
+      NEXT_PUBLIC_NETWORK_CURRENCY_SYMBOL: FHE
       # FAVICON_GENERATOR_API_KEY: dca4c945fbf69fa683d8a37747eca94767eda610
 
       # todo:
